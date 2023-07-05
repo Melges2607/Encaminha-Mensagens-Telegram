@@ -1,0 +1,25 @@
+from telethon import TelegramClient
+
+api_id = 28823272  # Substitua pelo seu ID de API
+api_hash = 'b9ce3a5e1d1e0240731d3892202e0057'  # Substitua pela sua chave de API
+
+# Inicializa o cliente do Telegram
+client = TelegramClient('session_name', api_id, api_hash)
+
+async def main():
+    # Se autentica no Telegram
+    await client.start()
+
+    # Obtém o objeto Entity do canal
+    channel = await client.get_entity('')
+    
+
+    # Exibe o ID do canal
+    print(f"O ID do canal '@nomedocanal' é {channel.id}")
+
+    # Encerra a conexão do cliente
+    await client.disconnect()
+
+# Executa a função async principal
+with client:
+    client.loop.run_until_complete(main())
